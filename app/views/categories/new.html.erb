@@ -1,6 +1,10 @@
 <h1>Categories</h1>
 <%= form_for Category.new ,url: categories_path do |f| %>
   <div class="form-group">
+    <%= f.label :parentid %>
+    <%= f.text_field :parent_id, class:'form-control',placeholder:"enter your parent id" %>
+  </div>
+  <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class:'form-control',placeholder:"enter your name" %>
   </div>
