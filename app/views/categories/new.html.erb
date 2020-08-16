@@ -1,0 +1,11 @@
+<h1>Categories</h1>
+<%= form_for Category.new ,url: categories_path do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class:'form-control',placeholder:"enter your name" %>
+  </div>
+  <div class="">
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+<%= link_to 'Home',root_path %>

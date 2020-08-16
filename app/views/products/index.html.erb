@@ -1,0 +1,26 @@
+<div class="">
+  <table>
+    <thead>
+      <tr>
+        <th>category id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>price</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.category_id %></td>
+          <td><%= product.name %></td>
+          <td><%= product.description %></td>
+          <td><%= product.price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'new product', new_product_path %><br>
+  <%= link_to 'home', root_path %>
+</div>
