@@ -2,7 +2,7 @@
 <%= form_for Product.new ,url: products_path do |f| %>
   <div class="form-group">
     <%= f.label :categoryid%>
-    <%= f.text_field :category_id, class:'form-control',placeholder:"enter your categoryid" %>
+    <%= f.collection_select :category_id, Category.all, :id, :name,prompt: "Select Category" %>
   </div>
   <div class="form-group">
     <%= f.label :name %>
