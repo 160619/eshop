@@ -11,7 +11,7 @@
       <% @categories.each do |category| %>
         <tr>
           <td><%= category.name %></td>
-          <td><%= category.parent_id %></td>
+          <td><%= category.parent_category&.name %></td>
         </tr>
       <% end %>
     </tbody>
