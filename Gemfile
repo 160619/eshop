@@ -14,6 +14,7 @@ gem 'sass-rails', '>= 6'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 gem 'devise'
+gem 'paperclip', '~> 4.2.0'
 gem 'turbolinks'
 gem 'jquery-rails'
 # Use Redis adapter to run Action Cable in production

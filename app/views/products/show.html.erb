@@ -1,7 +1,7 @@
 <h2><%= @product.name %></h2>
 <ul>
-  <li>Description: $<%= @product.description %></li>
-  <li>Price: <%= @product.price %></li>
+  <li>Description: <%= @product.description %></li>
+  <li>Price: $<%= @product.price %></li>
   <% if @product.reviews.any? %>
     <li>Average Rating: <%= @product.reviews.average(:rating).round(2) %> / 5</li>
   <% end %>
