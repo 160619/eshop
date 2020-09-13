@@ -16,6 +16,10 @@
     <%= f.label :price %>
     <%= f.text_field :price, class:'form-control',placeholder:"enter your price" %>
   </div>
+  <div class="form-group">
+    <%= f.file_field :image %>
+  </div>
+
   <div class="">
     <%= f.submit 'Submit', class: 'btn btn-primary' %>
   </div>

@@ -2,8 +2,10 @@
 <ul>
   <li>Description: <%= @product.description %></li>
   <li>Price: $<%= @product.price %></li>
+  <li> <%= image_tag(@product.image_url) if @product.image? %></li>
   <% if @product.reviews.any? %>
-    <li>Average Rating: <%= @product.reviews.average(:rating).round(2) %> / 5</li>
+    <li>Average Rating: <%= @product.aggregate_rating %> / 5</li>
+
   <% end %>
 </ul>
 <h4>Reviews for <%= @product.name %></h4>
@@ -14,8 +16,10 @@
     <% end %>
   </ul>
 <% end %>
+<% if user_signed_in? %>
+  <%= render 'reviews/form', review: @review %>
+<% end %>
 <hr>
 <ul class="sub-links">
   <li><%= link_to "Return to products", products_path %></li>
-  <li><%= link_to "Add a review", new_product_review_path(product_id:@product.id) %></li>
 </ul>

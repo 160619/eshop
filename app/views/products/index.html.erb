@@ -6,6 +6,7 @@
         <th>Name</th>
         <th>Description</th>
         <th>price</th>
+        <th> image </th>
       </tr>
     </thead>
 
@@ -15,7 +16,8 @@
           <td><%= product.category_id %></td>
           <td><%= link_to product.name, product_path(product) %></td>
           <td><%= product.description %></td>
-          <td><%= product.price %></td>
+          <td>$<%= product.price %></td>
+          <td><%= image_tag product.image_url.to_s %><td>
         </tr>
       <% end %>
     </tbody>

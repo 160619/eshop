@@ -1,0 +1,6 @@
+<%= form_for [@review, @reply] do |f| %>
+  <%= current_user.email %>
+  <%= f.label :comment %>
+  <%= f.text_area :comment %>
+  <%= f.submit "Submit comment" %>
+<% end %>

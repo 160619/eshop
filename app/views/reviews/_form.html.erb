@@ -1,6 +1,5 @@
 <h2>New Review for <%= @product.name %></h2>
 <%= form_for [@product, @review] do |f| %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.label :content, "Write your review below" %>
   <%= f.text_area :content %>
   <%= f.label :rating, "Rate this product" %>
