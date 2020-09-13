@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     if @review.save
       @product.calculate_rating
-      redirect_to product_path(@review.product), notice: 'Review was successfully created.'
+      redirect_to product_path(@review.product_id), notice: 'Review was successfully created.'
     else
       render 'products/show'
     end
@@ -28,6 +28,6 @@ class ReviewsController < ApplicationController
 
 private
   def review_params
-    params.require(:review).permit(:user_id, :content, :rating)
+    params.require(:review).permit(:user_id, :content, :rating, :product_id)
   end
 end

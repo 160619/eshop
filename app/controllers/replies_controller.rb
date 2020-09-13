@@ -9,9 +9,9 @@ class RepliesController < ApplicationController
     @reply = @review.replies.new(reply_params)
     @reply.user_id = current_user.id
     if @reply.save
-      redirect_to review_path(@reply.review), notice: 'reply was successfully created.'
+      redirect_to product_path(@review.product_id), notice: 'reply was successfully created.'
     else
-      render 'reviews/show'
+      render 'products/show'
     end
   end
 
