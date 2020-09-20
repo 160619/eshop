@@ -1,0 +1,7 @@
+reviewList = document.getElementById("reviews_of_product_<%= @review.product_id %>");
+
+newReviewItem = document.createElement('li');
+newReviewItem.appendChild(
+  document.createTextNode('<%= @review.user.email %>: <%= @review.content %> <%= @review.rating %>')
+);
+reviewList.appendChild(newReviewItem);

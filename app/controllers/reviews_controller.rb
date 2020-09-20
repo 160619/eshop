@@ -11,11 +11,16 @@ class ReviewsController < ApplicationController
     @product = Product.find(params[:product_id])
     @review = @product.reviews.new(review_params)
     @review.user_id = current_user.id
-    if @review.save
-      @product.calculate_rating
-      redirect_to product_path(@review.product_id), notice: 'Review was successfully created.'
-    else
-      render 'products/show'
+
+    respond_to do |format|
+      if @review.save
+        format.html {redirect_to @review.product, notice: 'review was successfully created '}
+        format.js
+        format.json {render json: @review, status: :created, location: @user }
+      else
+        format.html {render "product/show"}
+        format.json {render json: @review.errors, status: :unprocessable_emtity}
+      end
     end
   end
 

@@ -8,10 +8,16 @@ class RepliesController < ApplicationController
     @review = Review.find(params[:review_id])
     @reply = @review.replies.new(reply_params)
     @reply.user_id = current_user.id
-    if @reply.save
-      redirect_to product_path(@review.product_id), notice: 'reply was successfully created.'
-    else
-      render 'products/show'
+
+    respond_to do |format|
+      if @reply.save
+        format.html { redirect_to @review.product, notice: 'reply was successfully created.' }
+        format.js
+        format.json { render json: @reply, status: :created, location: @user }
+      else
+        format.html { render "products/show" }
+        format.json {render json: @reply.errors, status: :unprocessable_emtity}
+      end
     end
   end
 

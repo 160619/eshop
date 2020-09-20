@@ -9,18 +9,22 @@
   <% end %>
 </ul>
 <h4>Reviews for <%= @product.name %></h4>
+<ul id="reviews_of_product_<%= @review.product_id %>">
 <% if @product.reviews.any? %>
-  <ul>
-    <% @product.reviews.order(:updated_at).reverse.each do |review| %>
-      <li><% review.rating.times do %><span class="star">★</span><% end %><% (5 - review.rating).times do %><span class="out-of">★</span><% end %><a href="<%= product_review_path(@product, review) %>">  <%= truncate(review.content, :length => 30) %></a></li>
-      <%= render 'replies/form', reply: @reply, review: review %>
-      <% review.replies.each do |review| %>
-         <%= review.comment %>
-         <br>
+  <% @product.reviews.order(:updated_at).reverse.each do |review| %>
+      <li><p><% review.rating.times do %><span class="star">★</span><% end %><% (5 - review.rating).times do %><span class="out-of">★</span><% end %>  <%= truncate(review.content, :length => 30) %></p></li>
+    <ul id="comments_of_review_<%= review.id %>">
+      <% review.replies.each do |reply| %>
+         <li>
+           <p><%= reply.user.email %>: <%= reply.comment %></p>
+         </li>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+    <%= render 'replies/form', reply: @reply, review: review %>
+  <% end %>
 <% end %>
+</ul>
+
 <% if user_signed_in? %>
   <%= render 'reviews/form', review: @review %>
 <% end %>

@@ -1,0 +1,9 @@
+replyList = document.getElementById("comments_of_review_<%= @review.id %>");
+
+newReplyItem = document.createElement('li');
+newReplyItem.appendChild(
+  document.createTextNode('<%= @reply.user.email %>: <%= @reply.comment %>')
+);
+replyList.appendChild(newReplyItem);
+
+document.getElementById("new_comment_of_review_<%= @review.id %>").reset();
