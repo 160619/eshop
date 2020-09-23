@@ -1,13 +1,22 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
 
-  resources :categories, only: [:index, :new, :create]
+  resources :categories, only: [:index]
   resources :products do
     resources :reviews
   end
 
   resources :reviews do
     resources :replies
+  end
+
+  namespace :admin do
+    root 'admin_pages#home'
+    resources :products, only: [:new, :create, :index, :show]
+    resources :categories, only: [:new, :create, :index]
+    resources :users, only: [:index]
+    resources :reviews
+
   end
 
   devise_for :users

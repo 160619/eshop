@@ -1,0 +1,21 @@
+<div class="">
+  <table>
+    <thead>
+      <tr>
+        <th>user id</th>
+        <th>email</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+</div>
+<%= link_to 'Home',admin_root_path %>

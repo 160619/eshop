@@ -1,0 +1,21 @@
+<div class="">
+  <table>
+    <thead>
+      <tr>
+        <th> review of user </th>
+        <th> content </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= review.user.email %></td>
+          <td><%= review.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+</div>
+<%= link_to 'Home',admin_root_path %>
