@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :set_review, only: [:edit, :update, :destroy]
 
   def new
     @product = Product.find(params[:product_id])
@@ -14,25 +15,46 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html {redirect_to @review.product, notice: 'review was successfully created '}
-        format.js
-        format.json {render json: @review, status: :created, location: @user }
+        html_reply_form = render_to_string(
+          partial: 'replies/form',
+          locals: {review: @review, reply: Reply.new}
+        )
+        @product.calulate_rating
+        format.json {render json: review_serialize(html_reply_form), status: :created }
       else
-        format.html {render "product/show"}
-        format.json {render json: @review.errors, status: :unprocessable_emtity}
+        format.json {render json: @review.errors.full_messages, status: :unprocessable_entiry }
       end
     end
   end
 
-  def show
+private
+  def set_review
     @review = Review.find(params[:id])
-    @product = @review.product
-    @reply = @review.replies.new
   end
 
-
-private
   def review_params
     params.require(:review).permit(:user_id, :content, :rating, :product_id)
+  end
+
+  def review_serialize(reply_form)
+    {
+      id: @review.content,
+      content: @review.content,
+      rating: @review.rating,
+      user: {
+        email: @review.user.email
+      },
+      product: {
+        aggregate_rating: @product.reload.aggregate_rating
+      },
+      reply_form: reply_form
+    }
+  end
+
+  def reply_form_html
+    render_to_string(
+      partial: 'replies/form',
+      locals: { review: @review, reply: Reply.new }
+    )
   end
 end

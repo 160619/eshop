@@ -1,5 +1,5 @@
 <h2>New Review for <%= @product.name %></h2>
-<%= form_for [@product, @review], remote: true do |f| %>
+<%= form_for [@product, @review], remote: true, html: { id:"new_review" } do |f| %>
   <%= f.label :content, "Write your review below" %>
   <%= f.text_area :content %>
   <%= f.label :rating, "Rate this product" %>
