@@ -10,10 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require_self
 //= require jquery
 //= require turbolinks
+//= require rails-ujs
+//= require_self
 
 $(document).on("ready turbolinks:load", function() {
   $("#new_review")

@@ -13,7 +13,7 @@ class RepliesController < ApplicationController
       if @reply.save
         format.html { redirect_to @review.product, notice: 'reply was successfully created.' }
         format.js
-        format.json { render json: reply, status: :created, location: @user }
+        format.json { render json: @reply, status: :created, location: @user }
       else
         format.html { render "products/show" }
         format.json {render json: @reply.errors, status: :unprocessable_emtity}
