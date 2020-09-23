@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
           partial: 'replies/form',
           locals: {review: @review, reply: Reply.new}
         )
-        @product.calulate_rating
+        @product.calculate_rating
         format.json {render json: review_serialize(html_reply_form), status: :created }
       else
         format.json {render json: @review.errors.full_messages, status: :unprocessable_entiry }
