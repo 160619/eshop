@@ -5,7 +5,7 @@ RSpec.describe ReviewsController, type: :controller do
   describe "#create" do
     context 'create a review successfully' do
       let(:user) do
-        User.create(email: 't1@gmail.com', password: '123456', password_confirmation: '123456')
+        User.create(email: 'vantam@gmail.com', password: '123456', password_confirmation: '123456')
       end
       let(:category) do
         Category.create(name: 'Apple')
@@ -19,14 +19,18 @@ RSpec.describe ReviewsController, type: :controller do
       end
 
       it "creates a new review in database" do
-        post :create, params: { product_id: product.id, review: { content: 'tam '*10, rating: 5 } }
+        post :create, params: { product_id: product.id, review: { content: 'a'*20, rating: 5 } }
         expect(Review.count).to eql(1)
       end
 
       it "calculates product avg rating" do
-        post :create, params: { product_id: product.id, review: { content: 'tam'*10, rating: 5 } }
+        post :create, params: { product_id: product.id, review: { content: 'a'*20, rating: 5 } }
         expect(product.reload.aggregate_rating).to eql(5)
       end
+    end
+
+    context 'create a review failed' do
+
     end
   end
 
