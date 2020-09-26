@@ -1,7 +1,9 @@
 <h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
-<%= link_to 'category', categories_path %>
-<%= link_to 'product', products_path %>
-
-<%= link_to 'login', new_user_session_path %>
-<%= link_to 'logout', destroy_user_session_path, method: :delete %>
+<% if current_user&.role == 'admin_user' %>
+  <li><%= link_to 'admin page', admin_root_path %> </li>
+<% end %>
+<hr>
+<li><%= link_to 'category', categories_path %></li>
+<li><%= link_to 'product', products_path %></li>
+<li><%= link_to 'login', new_user_session_path %></li>
+<li><%= link_to 'logout', destroy_user_session_path, method: :delete %></li>

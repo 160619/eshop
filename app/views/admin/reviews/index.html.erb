@@ -1,21 +1,28 @@
-<div class="">
-  <table>
-    <thead>
-      <tr>
-        <th> review of user </th>
-        <th> content </th>
-      </tr>
-    </thead>
+<h1>Admin Reviews</h1>
 
-    <tbody>
-      <% @reviews.each do |review| %>
-        <tr>
-          <td><%= review.user.email %></td>
-          <td><%= review.content %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <br>
-</div>
-<%= link_to 'Home',admin_root_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Rating</th>
+      <th>User</th>
+      <th>Product</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |rv| %>
+      <tr>
+        <td><%= rv.content %></td>
+        <td><%= rv.rating %></td>
+        <td><%= rv.user_id %></td>
+        <td><%= rv.product_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'admin Home',admin_root_path %>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:new, :create, :index]
     resources :users, only: [:index]
     resources :reviews
+    resources :replies
 
   end
 
