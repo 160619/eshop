@@ -1,6 +1,9 @@
 namespace :db do
   desc "TODO"
   task fake_data: :environment do
+    puts "create admin user"
+    User.create(email: 'admin@iuh.vn', password: '123456', password_confirmation: '123456', role: 'admin_user')
+
     arr_category_names = %w[samsung macbook asus acer iphone ipad lg hp lenovo]
 
     arr_category_names.each do |category_name|
