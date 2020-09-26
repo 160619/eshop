@@ -1,4 +1,4 @@
-<%= form_for [review, @reply], remote: true, html: { id:"new_comment_of_review_#{review.id}" } do |f| %>
+<%= form_for [review, reply], remote: true, html: { id:"new_comment_of_review_#{review.id}" } do |f| %>
   <%= current_user.email %>
   <%= f.label :comment %>
   <%= f.text_area :comment %>

@@ -5,14 +5,17 @@
   <li> <%= image_tag(@product.image_url) if @product.image? %></li>
   <% if @product.reviews.any? %>
     <li>Average Rating: <%= @product.aggregate_rating %> / 5</li>
-
   <% end %>
 </ul>
+<hr>
+
 <h4>Reviews for <%= @product.name %></h4>
-<ul id="reviews_of_product_<%= @review.product_id %>">
-<% if @product.reviews.any? %>
+<div id ='reviews'>
   <% @product.reviews.order(:updated_at).reverse.each do |review| %>
-      <li><p><% review.rating.times do %><span class="star">★</span><% end %><% (5 - review.rating).times do %><span class="out-of">★</span><% end %>  <%= truncate(review.content, :length => 30) %></p></li>
+    <div id= "review_item_<%= review.id %>">
+      <p><%= review.user.email %></p>
+      <p>Content: <%= review.content %></p>
+      <p>Rating: <%= review.rating %></p>
     <ul id="comments_of_review_<%= review.id %>">
       <% review.replies.each do |reply| %>
          <li>
@@ -21,9 +24,10 @@
       <% end %>
     </ul>
     <%= render 'replies/form', reply: @reply, review: review %>
+    </div>
+    <hr>
   <% end %>
-<% end %>
-</ul>
+</div>
 
 <% if user_signed_in? %>
   <%= render 'reviews/form', review: @review %>
