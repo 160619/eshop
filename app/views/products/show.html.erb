@@ -3,9 +3,16 @@
   <li>Description: <%= @product.description %></li>
   <li>Price: $<%= @product.price %></li>
   <li> <%= image_tag(@product.image_url) if @product.image? %></li>
-  <% if @product.reviews.any? %>
-    <li>Average Rating: <%= @product.aggregate_rating %> / 5</li>
-  <% end %>
+  <p>
+  <strong>Avg rating:</strong>
+  <span id="aggregate_rating">
+    <% if @product.reviews.any? %>
+      <%= @product.aggregate_rating %>
+    <% else %>
+      Not have any reviews
+    <% end %>
+  </span>
+</p>
 </ul>
 <hr>
 
