@@ -38,7 +38,7 @@ private
 
   def review_serialize(reply_form)
     {
-      id: @review.content,
+      id: @review.id,
       content: @review.content,
       rating: @review.rating,
       user: {
