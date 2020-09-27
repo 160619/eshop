@@ -11,8 +11,8 @@ namespace :db do
       category = Category.create(name: category_name)
 
       puts "creating products of category #{category_name}"
-      ['p1','p2'].each do |product_name|
-        Product.create(name: product_name, price: 2000, quantity: 5, category_id: category.id)
+      100000.times.each do |product_name|
+        Product.create(name: Faker::App.name, price: 2000, quantity: 5, category_id: category.id)
       end
     end
   end

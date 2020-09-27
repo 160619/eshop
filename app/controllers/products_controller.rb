@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all.order(:name)
+    @products = Product.first(30)
   end
 
   def show

@@ -1,4 +1,4 @@
-<h1>StaticPages#home</h1>
+<h1>Home</h1> <%= render 'shared/form_search' %>
 <% if current_user&.role == 'admin_user' %>
   <li><%= link_to 'admin page', admin_root_path %> </li>
 <% end %>
