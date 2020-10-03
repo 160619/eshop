@@ -1,9 +1,2 @@
-<h1>Home</h1> <%= render 'shared/form_search' %>
-<% if current_user&.role == 'admin_user' %>
-  <li><%= link_to 'admin page', admin_root_path %> </li>
-<% end %>
-<hr>
-<li><%= link_to 'category', categories_path %></li>
-<li><%= link_to 'product', products_path %></li>
-<li><%= link_to 'login', new_user_session_path %></li>
-<li><%= link_to 'logout', destroy_user_session_path, method: :delete %></li>
+<%= render 'shared/page_content' %>
+<%= render 'shared/footer' %>

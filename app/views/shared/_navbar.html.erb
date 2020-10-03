@@ -1,0 +1,44 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      eShop</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <form class="form-inline mr-auto">
+          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+          <a class="nav-link" href="#">
+            Search
+          </a>
+        </form>
+        <% if current_user&.role == 'admin_user' %>
+          <li class="nav-item active">
+            <a class="nav-link" href=" <%= admin_root_path %> ">
+              Admin
+            </a>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <a class="nav-link" href=" <%= products_path %>">
+            Product
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= categories_path %>">
+            Category</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_session_path %>">
+            Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <%= link_to 'logout', destroy_user_session_path, method: :delete %></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
