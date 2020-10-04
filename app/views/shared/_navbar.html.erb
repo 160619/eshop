@@ -8,12 +8,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <form class="form-inline mr-auto">
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-          <a class="nav-link" href="#">
-            Search
-          </a>
-        </form>
+        <div class="form-inline mr-auto">
+          <%= render 'shared/search' %>
+        </div>
         <% if current_user&.role == 'admin_user' %>
           <li class="nav-item active">
             <a class="nav-link" href=" <%= admin_root_path %> ">
