@@ -20,6 +20,8 @@ gem 'jquery-rails'
 gem 'mini_magick'
 gem 'rubocop', '~> 0.93.0', require: false
 gem 'turbolinks'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
