@@ -7,10 +7,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="form-inline ml-auto">
+        <%= render 'shared/search' %>
+      </div>
       <ul class="navbar-nav ml-auto">
-        <div class="form-inline mr-auto">
-          <%= render 'shared/search' %>
-        </div>
         <% if current_user&.role == 'admin_user' %>
           <li class="nav-item active">
             <a class="nav-link" href=" <%= admin_root_path %> ">

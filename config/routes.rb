@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'static_pages#home'
 
-  resources :categories, only: [:index]
+  resources :categories, only: %i[index]
   resources :products do
     resources :reviews
   end
@@ -12,12 +14,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'admin_pages#home'
-    resources :products, only: [:new, :create, :index, :show]
-    resources :categories, only: [:new, :create, :index]
-    resources :users, only: [:index]
+    resources :products, only: %i[new create index show]
+    resources :categories, only: %i[new create index]
+    resources :users, only: %i[index]
     resources :reviews
     resources :replies
-
   end
 
   devise_for :users

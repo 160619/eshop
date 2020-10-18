@@ -1,22 +1,27 @@
-class Admin::CategoriesController < AdminController
-  def new
-    @category = Category.new
-  end
+# frozen_string_literal: true
 
-  def create
-    @category = Category.new category_params
-    if @category.save
-      flash[:success] = 'Create category successfully'
-      redirect_to root_path
-    else
-      flash[:alert] = 'Create category failed'
-      render :new
+module Admin
+  # CategoriesController
+  class CategoriesController < AdminController
+    def new
+      @category = Category.new
     end
-  end
 
-  private
+    def create
+      @category = Category.new category_params
+      if @category.save
+        flash[:success] = 'Create category successfully'
+        redirect_to root_path
+      else
+        flash[:alert] = 'Create category failed'
+        render :new
+      end
+    end
 
-  def category_params
-    params.require(:category).permit :parent_id, :name
+    private
+
+    def category_params
+      params.require(:category).permit :parent_id, :name
+    end
   end
 end

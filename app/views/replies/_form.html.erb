@@ -1,6 +1,18 @@
-<%= form_for [review, reply], remote: true, html: { id:"new_comment_of_review_#{review.id}" } do |f| %>
-  <%= current_user.email %>
-  <%= f.label :comment %>
-  <%= f.text_area :comment %>
-  <%= f.submit "Submit comment" %>
+<%= form_with(model: reply, url: review_replies_path(review_id: review.id), id: "new_comment_of_review_#{review.id}") do |form| %>
+  <% if reply.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reply.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <ul>
+        <% reply.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.text_area :comment %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
 <% end %>

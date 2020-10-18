@@ -1,7 +1,7 @@
 namespace :db do
-  desc "TODO"
+  desc 'TODO'
   task fake_data: :environment do
-    puts "create admin user"
+    puts 'create admin user'
     User.create(email: 'admin@iuh.vn', password: '123456', password_confirmation: '123456', role: 'admin_user')
 
     arr_category_names = %w[samsung macbook asus acer iphone ipad lg hp lenovo]
@@ -11,7 +11,7 @@ namespace :db do
       category = Category.create(name: category_name)
 
       puts "creating products of category #{category_name}"
-      100000.times.each do |product_name|
+      100_000.times.each do |_product_name|
         Product.create(name: Faker::App.name, price: 2000, quantity: 5, category_id: category.id)
       end
     end

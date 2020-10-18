@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -12,16 +14,15 @@ gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'bootstrap4-kaminari-views'
 gem 'carrierwave'
 gem 'devise'
 gem 'faker'
 gem 'jbuilder', '~> 2.7'
 gem 'jquery-rails'
-gem 'mini_magick'
-gem 'rubocop', '~> 0.93.0', require: false
-gem 'turbolinks'
 gem 'kaminari'
-gem 'bootstrap4-kaminari-views'
+gem 'mini_magick'
+gem 'turbolinks'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -45,6 +46,7 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'rubocop', '~> 0.93.0', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
