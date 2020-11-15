@@ -9,6 +9,7 @@ class Review < ApplicationRecord
   validates :content, length: { in: 10..120 }
 
   after_create :calculate_product_rating
+  after_commit :send_thankyou_email
 
   def html_reply_form
     renderer = ReviewsController.renderer.new(http_host: 'localhost')
@@ -16,6 +17,10 @@ class Review < ApplicationRecord
       partial: 'replies/form',
       locals: { review: self, reply: Reply.new }
     )
+  end
+
+  def send_thankyou_email
+    ReviewWorker.perform_async(id)
   end
 
   private
