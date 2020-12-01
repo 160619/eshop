@@ -16,4 +16,11 @@ namespace :db do
       end
     end
   end
+
+  task fake_review: :environment do
+    puts "hello #{Time.zone.now}"
+    u = User.first
+    p = Product.first
+    Review.create(product_id: p.id,content: 'when ever 000001111s', rating: 4, user_id: u.id)
+  end
 end
